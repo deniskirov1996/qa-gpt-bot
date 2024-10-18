@@ -1,4 +1,3 @@
-
 bot_id: '' # Идентификатор вашего бота
 log_path: '' # Путь до лог файла
 start_text:
@@ -32,3 +31,40 @@ database:
   pg_database: '' # Имя вашей БД 
   pg_user: '' # Логин вашей БД
   pg_password: '' # Пароль вашей БД
+bot_messages:
+  llm_choise: "Выбери инструмент для генерации тестовых кейсов (выбор через кнопки ниже)"
+  welcome_message: "Привет, это интеллектуальный помощник для QA Домтеха. Нажми /help для того, чтобы узнать чем бот может помочь"
+  help_message: "/getcasejira - генерация тестового кейса в Jira по переданному идентификатору сущности.\n /getcasewiki - генерация тестового кейса по сценарию на вики по переданному id страницы.\n /getcaseapi - генерация тестового кейса по swagger и нужному методу.\n /createPageObject - генерация описания объектов html страницы для АТ по переданным данным.\n /clearSession - очистка пользовательской сессии.\n /createBugReport - создание баг-репорта в Jira."
+  create_bug_unauthorized: "0) Передай свой api token_jira в формате JiraToken {MyToken}. Пример: JiraToken abcd123. Как получить токен можно почитать тут - https://wiki.domrf.ru/pages/viewpage.action?pageId=279049742\n Токен хранится в системе до начала следующего дня\n1) Передай название бага в формате Название {Название бага}\n2) Передай шаги воспроизведения в формате Шаги {Шаги}\n3) Передай ожидаемый результат в формате ОР {Ожидаемый результат}\n4) Передай фактический результат в формате ФР {Фактический результат}"
+  create_bug_authorized: "1) Передай название бага в формате Название {Название бага}\n2) Передай шаги воспроизведения в формате Шаги {Шаги}\n3) Передай ожидаемый результат в формате ОР {Ожидаемый результат}\n4) Передай фактический результат в формате ФР {Фактический результат}"
+  get_wiki_token: "Передай свой api token_wiki в формате WikiToken {MyToken}. Пример: WikiToken abcd123. Как получить токен можно почитать тут - https://wiki.domrf.ru/pages/viewpage.action?pageId=279049742\n Токен хранится в системе до начала следующего дня"
+  get_jira_token: "Передай свой api token_jira в формате JiraToken {MyToken}. Пример: JiraToken abcd123. Как получить токен можно почитать тут - https://wiki.domrf.ru/pages/viewpage.action?pageId=279049742\n Токен хранится в системе до начала следующего дня"
+  get_testit_token: "Передай свой api token_testit в формате TestitToken {MyToken}. Пример: TestitToken abcd123. Как получить токен можно почитать тут - https://wiki.domrf.ru/pages/viewpage.action?pageId=279049742\nТокен хранится в системе до начала следующего дня"
+  get_prompt_pageobject: "Напиши prompt, который будет вставлен до переданной html в формате Prompt {prompt}"
+  get_wiki_pageid: "Напиши id страницы в Wiki в формате pageid={id}, пример - pageId=246777612"
+  get_ticket_jira: "Напиши тикет в Jira в формате ERS-XXXX"
+  get_testit_project: "Передай название своего проекта в формате TestitProject {MyProject}. Пример: TestitProject ЦТ. АТ. Тест"
+  get_testit_section: "Передай идентификатор секции в своем проекте в формате TestitSection {MySection}. Пример: TestitSection ab151a65-6a80-4415-92eb-d79245886f42"
+  api_choise: "Выбери что ты хочешь сделать:\n Генерация тестовых кейсов для проверки API:\n/gettextcase\nГенерация API тестов в формате CURL:\n/getcurltests"
+  get_apidoc: "Передай ссылку на api-doc в формате Apidoc {link}. Пример: Apidoc https://sma-expertise.apps.k8s.uat.domoy.ru/api-docs. Как найти ссылку на api-doc можно почитать тут - https://wiki.domrf.ru/pages/viewpage.action?pageId=279049742"
+  get_method: "Напиши метод из swagger в формате Method {yourmethod}, пример - Method /api/v1/expertise/type/{full-statement-id}"
+  get_more_cases_summary: "* Если была генерация из тикета в Jira - выполни /sendToJira, для отправки в другой тикет - передай номер тикета, куда отправить кейсы в формате send ERS-XXXX, после чего выполни /sendToJira\n* Если была генерация из wiki - выполни /sendToWiki\n* Если хочешь отправить результаты генерации в TestIT выполни /sendToTestit"
+  cases_jira_result: "* Если хочешь сгенерировать дополнительные кейсы - выполни /getMoreCases Необходимо выполнять до отправки результата!\n* Если хочешь опубликовать текущие кейсы комментарием в тикет в Jira - выполни /sendToJira\n* Если хочешь отправить текущие результаты генерации в другой тикет - передай номер тикета, куда отправить кейсы в формате send ERS-XXXX, после чего выполни /sendToJira\n* Если хочешь отправить текущие результаты генерации в TestIT выполни /sendToTestit"
+  cases_wiki_result: "* Если хочешь сгенерировать дополнительные кейсы - выполни /getMoreCases Необходимо выполнять до отправки результата!\n* Если хочешь опубликовать текущие кейсы комментарием в статью на Wiki выполни /sendToWiki\n* Если хочешь отправить текущие результаты генерации в TestIT выполни /sendToTestit"
+  cases_api_result: "Если хочешь сгенерировать дополнительные кейсы - выполни /getMoreCases\n* Если хочешь отправить текущие результаты генерации в тикет Jira - передай номер тикета, куда отправить кейсы в формате send ERS-XXXX, после чего выполни /sendToJira\n* Если хочешь отправить текущие результаты генерации в TestIT выполни /sendToTestit\n* Если хочешь создать баг-репорт в Jira - выполни /createBugReport"
+  curl_to_code: "Можно трансформировать curl тесты в тесты на Python и Java, для этого выбери:\n /getjavatests\n /getpythontests"
+  bug_report: "Если найден баг - вызови /createBugReport и создай его в Jira"
+  error_send_case_jira: "Что-то пошло не так, не удалось занести тестовые кейсы в комментарий к тикету, попробуй позднее"
+  error_order_send_case_jira: "/sendToJira можно вызывать только сразу после генерации тестовых кейсов, попробуй сначала"
+  error_send_case_wiki: "Что-то пошло не так, не удалось занести тестовые кейсы в комментарий к статье, попробуй позднее"
+  error_order_send_case_wiki: "/sendToWiki можно вызывать только сразу после генерации тестовых кейсов, попробуй сначала"
+  error_get_java_tests: "Что-то пошло не так, не удалось сгенерировать API тесты на Java, попробуй позднее"
+  error_order_get_java_tests: "/getjavatests можно вызывать только сразу после генерации API тестов CURL, попробуй сначала"
+  error_get_python_tests: "Что-то пошло не так, не удалось API тесты на Python, попробуй позднее"
+  error_order_get_python_tests: "/getpythontests можно вызывать только сразу после генерации API тестов CURL, попробуй сначала"
+  error_order_get_more_cases: "Метод /getMoreCases можно вызывать только после успешной генерации кейсов и при выборе модели yaGPT"
+  error_parameter_testit: "Не передан один из обязательных параметров для отправки кейса в TestIT"
+  error_testit: "Не удалось отправить кейсы в TestIT, проверь данные и попробуй снова"
+  error_apidoc: "Что-то пошло не так, возможно api-doc/Method переданы не верно"
+  error_api_required_param: "Не передан один из обязательных параметров, попробуй заново"
+  error_text: "Ты написал что-то необрабатываемое. Напиши /help для того, чтобы узнать чем бот может помочь"
